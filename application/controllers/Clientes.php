@@ -1,8 +1,9 @@
 <?php
-class Clientes extends CI_Controller {
+class Clientes extends MY_Controller {
 
   public function __construct(){
     parent::__construct();
+    $this->is_logged_in();
     $this->load->model('Cliente_model');
     $this->load->helper('url_helper');
   }
