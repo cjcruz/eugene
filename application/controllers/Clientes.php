@@ -1,5 +1,8 @@
 <?php
-class Clientes extends MY_Controller {
+
+require_once APPPATH . '/controllers/Backend_Controller.php';
+
+class Clientes extends Backend_Controller {
 
   public function __construct(){
     parent::__construct();
@@ -16,7 +19,12 @@ class Clientes extends MY_Controller {
     $this->load->view('layout/footer');
   }
 
-  public function view($slug = NULL){
-    $data['news_item'] = $this->news_model->get_news($slug);
+  public function listar_para_ajax_drowpdown(){
+    $clientes = $this->Cliente_model->buscar_todos();
+    $respuesta = array(
+      'success' => 1,
+      'data' => $clientes
+    );
+    echo json_encode($respuesta);
   }
 }

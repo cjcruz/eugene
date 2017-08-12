@@ -1,12 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Usuarios extends MY_Controller{
+require_once APPPATH . '/controllers/Backend_Controller.php';
+
+class Usuarios extends Backend_Controller{
   
   public function __construct(){
     parent::__construct();
-    $this->is_logged_in();
     
+    $this->load->model('Usuario_model');
     // Force SSL
     //$this->force_ssl();
 
@@ -16,10 +18,6 @@ class Usuarios extends MY_Controller{
   }
 
   public function index(){
-    if( !$this->require_role('admin') ) return;
-    
-    $this->load->model('Usuario_model');
-
     $data['title'] = 'Usuarios';
     $data['usuarios'] = $this->Usuario_model->buscar_todos();
     

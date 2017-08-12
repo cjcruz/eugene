@@ -199,6 +199,14 @@
   <script src="/eugene/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- Bootstrap 3.3.6 -->
   <script src="/eugene/assets/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="/eugene/assets/plugins/select2/select2.full.min.js"></script>
+
+  <!-- InputMask -->
+  <script src="/eugene/assets/plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="/eugene/assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="/eugene/assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
   <!-- FastClick -->
   <script src="/eugene/assets/plugins/fastclick/fastclick.js"></script>
   <!-- AdminLTE App -->
@@ -208,6 +216,9 @@
   <!-- jvectormap -->
   <script src="/eugene/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
   <script src="/eugene/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+  <script src="/eugene/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+
   <!-- SlimScroll 1.3.0 -->
   <script src="/eugene/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <!-- ChartJS 1.0.1 -->
@@ -216,5 +227,7 @@
   <!-- <script src="assets/dist/js/pages/dashboard2.js"></script> -->
   <!-- AdminLTE for demo purposes -->
   <!-- <script src="assets/dist/js/demo.js"></script> -->
+
+  <script src="/eugene/assets/dist/js/eugene.js"></script>
 </body>
 </html>

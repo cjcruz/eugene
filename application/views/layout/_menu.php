@@ -10,8 +10,10 @@
       </span>
     </a>
     <ul class="treeview-menu">
+      <li class="active">
+        <a href="<?php echo base_url('/cupones'); ?>"><i class="fa fa-circle-o"></i> Cupones</a>
+      </li>
       <li><a href="index.html"><i class="fa fa-circle-o"></i> Compras</a></li>
-      <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
     </ul>
   </li>
   <li class="treeview">
@@ -27,6 +29,6 @@
     </ul>
   </li>
   <li><a href="<?php echo base_url('/clientes'); ?>"><i class="fa fa-users"></i> <span>Clientes</span></a></li>
-  <li><a href="<?php echo base_url('/establecimientos'); ?>"><i class="fa fa-university"></i> <span>Establecimientos</span></a></li>
+  <li><a href="<?php echo base_url('/tiendas'); ?>"><i class="fa fa-university"></i> <span>Tiendas</span></a></li>
   <li><a href="<?php echo base_url('/usuarios'); ?>"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
 </ul>

@@ -17,6 +17,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
   <!-- jvectormap -->
   <link rel="stylesheet" href="/eugene/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+
+  <link rel="stylesheet" href="/eugene/assets/plugins/datepicker/datepicker3.css">
+
+  <link rel="stylesheet" href="/eugene/assets/plugins/select2/select2.min.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="/eugene/assets/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
