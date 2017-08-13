@@ -21,7 +21,7 @@
     <tr>
       <td><?php echo $usuario['username']; ?></td>
       <td><?php echo $usuario['email']; ?></td>
-      <td><?php echo $usuario['auth_level']; ?></td>
+      <td><?php echo $this->Usuario_model->getRol($usuario['auth_level']); ?></td>
       <td>
         <a href="<?php echo site_url('clientes/'.$usuario['user_id']); ?>">Editar</a>
         <a href="<?php echo site_url('clientes/'.$usuario['user_id']); ?>">Ver</a>

@@ -1,7 +1,11 @@
 .login-page .login-box .login-box-body .btn{
-	margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 .login-page .login-box .login-box-body .checkbox{
-	margin-bottom: 20px;
-	margin-top: 0px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+.cliente-dropdown-item .cliente-dropdown-item-info div{
+  display: inline-block;
+  margin-right: 10px;
 }

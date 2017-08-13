@@ -1,11 +1,11 @@
 <?php
-class Tienda_model extends CI_Model {
+class Promocion_model extends CI_Model {
   public function __construct(){
     $this->load->database();
   }
 
   public function buscar_todos(){
-    $query = $this->db->get('tiendas');
+    $query = $this->db->get('promociones');
     return $query->result_array();
   }
 
@@ -13,9 +13,7 @@ class Tienda_model extends CI_Model {
     $tiendas = $this->buscar_todos();
     $opciones = array();
     foreach ($tiendas as $tienda) {
-      $item['id'] = $tienda['id'];
-      $item['text'] = $tienda['nombre']; 
-      $opciones[] = $item;
+      $opciones[ $tienda['id'] ] = $tienda['nombre'];
     }
     return $opciones;
   }

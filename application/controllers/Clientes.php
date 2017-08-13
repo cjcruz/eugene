@@ -23,7 +23,8 @@ class Clientes extends Backend_Controller {
     $clientes = $this->Cliente_model->buscar_todos();
     $respuesta = array(
       'success' => 1,
-      'data' => $clientes
+      'items' => $clientes,
+      'total_count' => count($clientes)
     );
     echo json_encode($respuesta);
   }

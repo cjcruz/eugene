@@ -7,30 +7,64 @@ $(document).ready(function(){
 
   $("[data-mask]").inputmask();
 
-  function formatRepo (repo) {
-    if (repo.loading) return repo.text;
+  function formatCliente (cliente) {
+    if (cliente.loading) return 'Buscando...';
 
-    var markup = "<div class='select2-result-repository clearfix'>" +
-      "<div class='select2-result-repository__avatar'><img src='" + repo.owner.avatar_url + "' /></div>" +
-      "<div class='select2-result-repository__meta'>" +
-        "<div class='select2-result-repository__title'>" + repo.full_name + "</div>";
+    var markup = "<div class='cliente-dropdown-item clearfix'>" +
+        "<div class='cliente-dropdown-item-title'>" + cliente.nombre + "</div>";
 
-    if (repo.description) {
-      markup += "<div class='select2-result-repository__description'>" + repo.description + "</div>";
-    }
-
-    markup += "<div class='select2-result-repository__statistics'>" +
-      "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.forks_count + " Forks</div>" +
-      "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
-      "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
+    markup += "<div class='cliente-dropdown-item-info'>" +
+      "<div class='cliente-dropdown-item-id'><i class='fa fa-id-card'></i> " + cliente.identificacion + "</div>" +
+      "<div class='cliente-dropdown-item-email'><i class='fa fa-envelope'></i> " + cliente.email + "</div>" +
+      "<div class='cliente-dropdown-item-telefono'><i class='fa fa-phone'></i> " + cliente.telefono + "</div>" +
     "</div>" +
-    "</div></div>";
+    "</div>";
 
     return markup;
   }
 
-  function formatRepoSelection (repo) {
-    return repo.full_name || repo.text;
+  function formatClienteSeleccionado (cliente) {
+    return cliente.nombre;
+  }
+
+  function crearFacturaIngresoLinea(id){
+    return '<tr id="'+id+'">\
+              <td>\
+                <div class="input-group">\
+                  <div class="input-group-addon">\
+                    <i class="fa fa-home"></i>\
+                  </div>\
+                  <select name="facturas['+id+'][tienda_id]" id="tienda" class="form-control tienda" style="width:100%;"></select>\
+                </div>\
+              </td>\
+              <td>\
+                <div class="input-group">\
+                  <div class="input-group-addon">\
+                    <i class="fa fa-hashtag"></i>\
+                  </div>\
+                  <input type="text" name="facturas['+id+'][numero]" class="form-control factura-numero" data-inputmask="\'mask\': \'999-999-999999999\'" id="factura_numero" data-mask/>\
+                </div>\
+              </td>\
+              <td>\
+                <div class="input-group date">\
+                  <div class="input-group-addon">\
+                    <i class="fa fa-calendar"></i>\
+                  </div>\
+                  <input type="text" name="facturas['+id+'][fecha_emision]" id="fecha" placeholder="Fecha" class="form-control fecha" data-date-format="yyyy-mm-dd"/>\
+                </div>\
+              </td>\
+              <td>\
+                <div class="input-group">\
+                  <div class="input-group-addon">\
+                    <i class="fa fa-usd"></i>\
+                  </div>\
+                  <input type="text" name="facturas['+id+'][total]" id="total" placeholder="Total de la compra" class="form-control"/>\
+                </div>\
+              </td>\
+              <td>\
+                <button type="button" class="btn btn-link btn-quitar-factura" data-factura-id="'+id+'"><i class="fa fa-trash" aria-hidden="true"></i> Quitar</button>\
+              </td>\
+            </tr>';
   }
 
 
@@ -63,7 +97,25 @@ $(document).ready(function(){
     },
     escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
     minimumInputLength: 3,
-    templateResult: formatRepo,
-    templateSelection: formatRepoSelection
+    templateResult: formatCliente,
+    templateSelection: formatClienteSeleccionado
   });
+
+  $('.solicitud-cupon .btn-agregar-factura').click(function(){
+    if(typeof facturas_contador === 'undefined') facturas_contador = 0;
+    var fila = crearFacturaIngresoLinea(facturas_contador);
+    var tabla = '.solicitud-cupon table tbody';
+    $(tabla).append(fila);
+    selector = tabla + ' tr#'+facturas_contador;
+    $(selector+' select.tienda').select2({data: tiendas});
+    $(selector+' .factura-numero').inputmask();
+    $(selector+' .fecha').datepicker({autoclose: true});
+    $(selector+' .btn-quitar-factura').click(function(){
+      var fila_actual = $(this).data('facturaId');
+      $(tabla+' tr#'+fila_actual).remove();
+    });
+    
+    facturas_contador++;
+  });
+
 });

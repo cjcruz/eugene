@@ -11,9 +11,9 @@
     </a>
     <ul class="treeview-menu">
       <li class="active">
-        <a href="<?php echo base_url('/cupones'); ?>"><i class="fa fa-circle-o"></i> Cupones</a>
+        <a href="<?php echo base_url('/cupones'); ?>"><i class="fa fa-circle-o"></i> Canje de Cupones</a>
       </li>
-      <li><a href="index.html"><i class="fa fa-circle-o"></i> Compras</a></li>
+      <li><a href="<?php echo base_url('/promociones'); ?>"><i class="fa fa-circle-o"></i> Promociones</a></li>
     </ul>
   </li>
   <li class="treeview">

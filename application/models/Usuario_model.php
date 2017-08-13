@@ -189,4 +189,16 @@ class Usuario_model extends MY_Model {
     $query = $this->db->get('users');
     return $query->result_array();
   }
+
+  public function getRol($level){
+    switch($level){
+      case 1:
+        return 'Cliente';
+      case 6:
+        return 'Manager';
+      case 9:
+        return 'Administrador';
+    }
+    return NULL;
+  }
 }
