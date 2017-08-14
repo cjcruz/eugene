@@ -31,7 +31,7 @@
           <p>Monto de Ventas</p>
         </div>
         <div class="icon">
-          <i class="ion ion-stats-bars"></i>
+          <i class="ion ion-cash"></i>
         </div>
         <a href="<?php echo site_url('ventas'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
@@ -59,7 +59,7 @@
           <p>Cupones Emitidos</p>
         </div>
         <div class="icon">
-          <i class="ion ion-pie-graph"></i>
+          <i class="ion ion-pricetag"></i>
         </div>
         <a href="<?php echo site_url('cupones'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
