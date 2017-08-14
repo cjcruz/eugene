@@ -1,6 +1,6 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  Ranking de Tiendas
+  <h1>Ranking de Tiendas</h1>
 </section>
 
 <!-- Main content -->

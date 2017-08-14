@@ -1,6 +1,6 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  Clientes
+  <h1>Clientes</h1>
 </section>
 
 <!-- Main content -->

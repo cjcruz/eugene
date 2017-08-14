@@ -1,6 +1,6 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  Ventas
+  <h1>Ventas</h1>
 </section>
 
 <!-- Main content -->
