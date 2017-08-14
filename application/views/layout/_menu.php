@@ -14,6 +14,7 @@
         <a href="<?php echo base_url('/cupones'); ?>"><i class="fa fa-circle-o"></i> Canje de Cupones</a>
       </li>
       <li><a href="<?php echo base_url('/promociones'); ?>"><i class="fa fa-circle-o"></i> Promociones</a></li>
+      <li><a href="<?php echo base_url('/ventas'); ?>"><i class="fa fa-circle-o"></i> Ventas</a></li>
     </ul>
   </li>
   <li class="treeview">
