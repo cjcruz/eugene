@@ -1,11 +1,14 @@
 $(document).ready(function(){
   $('.date-picker-control').datepicker({
-    autoclose: true
+    autoclose: true,
+    format: 'yyyy-mm-dd'
   });
 
   $(".select2").select2();
 
   $("[data-mask]").inputmask();
+
+  $("form.execute-validation").validate({});
 
   function formatCliente (cliente) {
     if (cliente.loading) return 'Buscando...';
@@ -34,7 +37,7 @@ $(document).ready(function(){
                   <div class="input-group-addon">\
                     <i class="fa fa-home"></i>\
                   </div>\
-                  <select name="facturas['+id+'][tienda_id]" id="tienda" class="form-control tienda" style="width:100%;"></select>\
+                  <select name="facturas['+id+'][tienda_id]" id="tienda_'+id+'" class="form-control tienda" style="width:100%;" required></select>\
                 </div>\
               </td>\
               <td>\
@@ -42,7 +45,7 @@ $(document).ready(function(){
                   <div class="input-group-addon">\
                     <i class="fa fa-hashtag"></i>\
                   </div>\
-                  <input type="text" name="facturas['+id+'][numero]" class="form-control factura-numero" data-inputmask="\'mask\': \'999-999-999999999\'" id="factura_numero" data-mask/>\
+                  <input required type="text" name="facturas['+id+'][numero]" class="form-control factura-numero" data-inputmask="\'mask\': \'999-999-999999999\'" id="factura_'+id+'" data-mask/>\
                 </div>\
               </td>\
               <td>\
@@ -50,7 +53,7 @@ $(document).ready(function(){
                   <div class="input-group-addon">\
                     <i class="fa fa-calendar"></i>\
                   </div>\
-                  <input type="text" name="facturas['+id+'][fecha_emision]" id="fecha" placeholder="Fecha" class="form-control fecha" data-date-format="yyyy-mm-dd"/>\
+                  <input required type="text" name="facturas['+id+'][fecha_emision]" id="fecha_'+id+'" placeholder="Fecha" class="form-control fecha" data-date-format="yyyy-mm-dd"/>\
                 </div>\
               </td>\
               <td>\
@@ -58,7 +61,7 @@ $(document).ready(function(){
                   <div class="input-group-addon">\
                     <i class="fa fa-usd"></i>\
                   </div>\
-                  <input type="text" name="facturas['+id+'][total]" id="total" placeholder="Total de la compra" class="form-control"/>\
+                  <input required type="number" step="0.01" name="facturas['+id+'][total]" id="total_'+id+'" placeholder="Total de la compra" class="form-control"/>\
                 </div>\
               </td>\
               <td>\
@@ -109,13 +112,54 @@ $(document).ready(function(){
     selector = tabla + ' tr#'+facturas_contador;
     $(selector+' select.tienda').select2({data: tiendas});
     $(selector+' .factura-numero').inputmask();
+    $(selector+' .factura-numero').rules('add', {
+      factura: true
+    });
+    
     $(selector+' .fecha').datepicker({autoclose: true});
     $(selector+' .btn-quitar-factura').click(function(){
       var fila_actual = $(this).data('facturaId');
       $(tabla+' tr#'+fila_actual).remove();
     });
     
+
     facturas_contador++;
+  });
+
+  $.validator.addMethod( "factura", function( value, element ) {
+    if ( this.optional( element ) ) {
+      return true;
+    }
+    param = new RegExp( "^(?:[0-9]{3}-[0-9]{3}-[0-9]{9})$" );
+    return param.test( value );
+  }, "Numero de factura incorrecto." );
+
+  $('form.solicitud-cupon').validate({ 
+
+    errorPlacement: function(error, element) {
+      if( element.hasClass('cliente') || element.hasClass('promocion') ){
+        error.appendTo( element.parent() );
+      }else{
+        error.appendTo( element.closest("td") );
+      }
+    },
+
+    submitHandler: function(form) {
+      if($('table.facturas-cliente tbody tr').length == 0){
+        $('#modal-warning').modal({});
+        return false;
+      }
+      form.submit();
+    }
+
+  });
+
+  $('form.solicitud-cupon .btn-guardar').click(function(){
+    $('form.solicitud-cupon').attr('action', '/eugene/cupones/crear');
+  });
+
+  $('form.solicitud-cupon .btn-guardar-y-aprobar').click(function(){
+    $('form.solicitud-cupon').attr('action', '/eugene/cupones/crear_y_aprobar');
   });
 
 });

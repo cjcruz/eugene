@@ -27,6 +27,10 @@
       <td>
         <?php if($item['estado'] == 'pendiente'){ ?>
         <span class="label label-warning">Pendiente</span>
+        <?php }else if($item['estado'] == 'aprobado'){  ?>
+        <span class="label label-success">Aprobado</span>
+        <?php }else{ ?>
+        <span class="label label-info"><?php echo $item['estado'] ?></span>
         <?php } ?>
       </td>
       <td><?php echo $item['total']; ?></td>

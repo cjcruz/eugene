@@ -20,7 +20,8 @@ class Clientes extends Backend_Controller {
   }
 
   public function listar_para_ajax_drowpdown(){
-    $clientes = $this->Cliente_model->buscar_todos();
+    $q = $this->input->get('q');
+    $clientes = $this->Cliente_model->buscar_por_clave($q);
     $respuesta = array(
       'success' => 1,
       'items' => $clientes,

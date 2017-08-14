@@ -27,7 +27,7 @@ class Cupones extends Backend_Controller {
     $this->load->model('Promocion_model');
     $this->load->helper('form');
     $data['tiendas'] = $this->Tienda_model->buscar_todos_para_dropdown();
-    $data['promociones'] = $this->Promocion_model->buscar_todos_para_dropdown();
+    $data['promociones'] = $this->Promocion_model->buscar_activos_para_dropdown();
 
     $this->load->view('layout/header', $data);
     $this->load->view('cupones/nuevo', $data);
@@ -66,6 +66,21 @@ class Cupones extends Backend_Controller {
   public function aprobar($solicitud_id){    
     if( $this->Solicitud_model->aprobar($solicitud_id) ){
       redirect(base_url()."cupones/mostrar/".$solicitud_id."?aprobado=1");
+    }
+  }
+
+
+  public function crear_y_aprobar(){
+    $cliente_id = $this->input->post('cliente_id');
+    $promocion_id = $this->input->post('promocion_id');
+    $facturas = $this->input->post('facturas');
+    $solicitud_id = $this->Solicitud_model->guardar(array(
+      'cliente_id' => $cliente_id,
+      'promocion_id' => $promocion_id,
+      'facturas' => $facturas
+    ));
+    if($solicitud_id && $this->Solicitud_model->aprobar($solicitud_id)){
+      redirect(base_url()."cupones/mostrar/".$solicitud_id."?exito=1");
     }
   }
 }

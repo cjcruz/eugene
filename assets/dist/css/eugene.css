@@ -9,3 +9,8 @@
   display: inline-block;
   margin-right: 10px;
 }
+
+label.error{
+  color: red;
+  font-weight: normal;
+}

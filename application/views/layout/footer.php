@@ -221,6 +221,12 @@
 
   <!-- SlimScroll 1.3.0 -->
   <script src="/eugene/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
+
+  <script src="/eugene/assets/plugins/jquery-validate/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="/eugene/assets/plugins/jquery-validate/localization/messages_es.js" />
+
+
   <!-- ChartJS 1.0.1 -->
   <script src="/eugene/assets/plugins/chartjs/Chart.min.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
