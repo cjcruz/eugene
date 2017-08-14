@@ -19,4 +19,13 @@ class Tiendas extends Backend_Controller {
     $this->load->view('layout/footer');
   }
 
+  public function ranking(){
+    $data['title'] = 'Ranking de Tiendas';
+    $data['ranking'] = $this->Tienda_model->ranking_de_ventas();
+
+    $this->load->view('layout/header', $data);
+    $this->load->view('tiendas/ranking', $data);
+    $this->load->view('layout/footer');
+  }
+
 }

@@ -19,4 +19,16 @@ class Tienda_model extends CI_Model {
     }
     return $opciones;
   }
+
+
+  public function ranking_de_ventas(){
+    $query = $this->db->query('SELECT t.id as tienda_id, t.nombre as tienda, sum(f.total) as ventas
+        FROM eugene.facturas as f
+        INNER JOIN eugene.tiendas as t on t.id = f.tienda_id
+        INNER JOIN eugene.solicitudes as s on s.id = f.solicitud_id
+        WHERE s.estado = "aprobado"
+        GROUP BY t.id, t.nombre
+        ORDER BY ventas DESC');
+    return $query->result_array();
+  }
 }
