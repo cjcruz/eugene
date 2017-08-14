@@ -12,7 +12,8 @@ class Solicitud_model extends CI_Model {
           SELECT f.solicitud_id, count(*) as numero_de_facturas, sum(total) as total  
           FROM eugene.facturas as f
           group by f.solicitud_id
-        ) as r1 on r1.solicitud_id = s.id');
+        ) as r1 on r1.solicitud_id = s.id
+        ORDER BY s.fecha_creacion DESC');
 
     return $query->result_array();
   }

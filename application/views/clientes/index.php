@@ -11,6 +11,7 @@
         <th>Nombres</th>
         <th>CI/RUC</th>
         <th>Email</th>
+        <th>Cupones</th>
         <th></th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
       <td><?php echo $cliente['nombre']; ?></td>
       <td><?php echo $cliente['identificacion']; ?></td>
       <td><?php echo $cliente['email']; ?></td>
+      <td><?php echo $cliente['cupones']; ?></td>
       <td>
         <a href="<?php echo site_url('clientes/'.$cliente['id']); ?>">Editar</a>
         <a href="<?php echo site_url('clientes/'.$cliente['id']); ?>">Ver</a>

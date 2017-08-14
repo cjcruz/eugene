@@ -5,7 +5,13 @@ class Cliente_model extends CI_Model {
   }
 
   public function buscar_todos(){
-    $query = $this->db->get('clientes');
+    $query = $this->db->query('SELECT c.*, r1.cupones
+      FROM eugene.clientes as c
+      LEFT JOIN (
+        SELECT s.cliente_id, sum(s.cupones) as cupones
+        FROM eugene.solicitudes as s
+        WHERE s.estado = "aprobado"
+        GROUP BY s.cliente_id) AS r1 ON r1.cliente_id = c.id');
     return $query->result_array();
   }
 
