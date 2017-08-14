@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/eugene/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <link rel="stylesheet" href="/eugene/assets/plugins/ion/ionicons.min.css">
   <!-- jvectormap -->
   <link rel="stylesheet" href="/eugene/assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 

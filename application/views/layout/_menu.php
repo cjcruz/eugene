@@ -1,7 +1,7 @@
 <!-- sidebar menu: : style can be found in sidebar.less -->
 <ul class="sidebar-menu">
   <li class="header">Menu Principal</li>
-  <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+  <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Tablero</span></a></li>
   <li class="treeview">
     <a href="#">
       <i class="fa fa-bar-chart"></i> <span>Cliente Frecuente</span>
