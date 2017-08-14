@@ -21,4 +21,14 @@ class Factura_model extends CI_Model {
 
     return $query->result_array();
   }
+
+  public function calcular_venta_por_dia($fecha){
+    $query = $this->db->query('SELECT sum(f.total) as venta
+      FROM eugene.facturas as f
+      INNER JOIN eugene.solicitudes as s on s.id = f.solicitud_id
+      WHERE s.estado = "aprobado" AND f.fecha_emision = "'.$fecha.'"');
+    $respuesta = $query->row(0);
+    if($respuesta->venta) return floatval($respuesta->venta);
+    return 0.0;
+  }
 }

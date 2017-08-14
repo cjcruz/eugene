@@ -9,7 +9,64 @@ class Welcome extends Backend_Controller {
     parent::__construct();    
   }
 
+  private function _calcularRangoDeFechas(){
+    date_default_timezone_set('America/Guayaquil');
+    $fechas = array();
+    for($i=0; $i<7; $i++){
+      $fechas[] = date('Y-m-d', strtotime("-".$i." days"));
+    }
+    return $fechas;
+  }
+
+  private function _calcularRangoDeVentas($fechas){    
+    $this->load->model('Factura_model');
+    $ventas = array();
+    foreach ($fechas as $fecha) {
+      $ventas[] = $this->Factura_model->calcular_venta_por_dia($fecha);
+    }
+    return $ventas;
+  }
+
+  private function _calcularEtiquetasDeFechas($fechas){
+    date_default_timezone_set('America/Guayaquil');
+    $dias_nombres = array(
+      'Sun' => 'Dom',
+      'Sat' => 'Sáb',
+      'Fri' => 'Vier',
+      'Thu' => 'Jue',
+      'Wed' => 'Mier',
+      'Tue' => 'Mar',
+      'Mon' => 'Lun'
+    );
+
+    $meses_nombres = array(
+      'Ene',
+      'Feb',
+      'Mar',
+      'Abr',
+      'May',
+      'Jun',
+      'Jul',
+      'Ago',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dic'
+    );
+    
+    $etiquetas = array();
+    foreach ($fechas as $fecha) {
+      $fecha = date_create($fecha);
+      $dia_nombre = date_format($fecha, 'D');
+      $mes = date_format($fecha, 'n') - 1;
+      $dia_numero = date_format($fecha, 'd');
+      $etiquetas[] = $dias_nombres[$dia_nombre].' '.$dia_numero.'-'.$meses_nombres[$mes];
+    }
+    return $etiquetas;
+  }
+
   public function index(){
+    $this->load->model('Solicitud_model');
 
     $query_facturas = $this->db->query('SELECT count(f.id) as facturas 
       FROM eugene.facturas as f
@@ -32,12 +89,19 @@ class Welcome extends Backend_Controller {
     $ventas = $query_ventas->row(0)->ventas;
     $clientes = $query_clientes->row(0)->clientes;
 
+    $data['solicitudes'] = $this->Solicitud_model->buscar_10_ultimas();
+
     $data['facturas'] = $facturas;
     $data['cupones'] = $cupones;
     $data['ventas'] = $ventas;
     $data['clientes'] = $clientes;
-    
-    $data['title'] = 'Dashboard';
+
+    $fechas = $this->_calcularRangoDeFechas();
+    $data['grafico_x'] = $this->_calcularEtiquetasDeFechas($fechas);
+    $data['grafico_y'] = $this->_calcularRangoDeVentas($fechas);
+
+
+    $data['title'] = 'Tablero';
     
     $this->load->view('layout/header', $data);
     $this->load->view('welcome_message', $data);

@@ -68,8 +68,11 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12">
-      <canvas id="areaChart" width="400" height="400"></canvas>
+    <div class="col-md-6 col-sm-12 col-xs-12">      
+      <?php $this->load->view('widgets/_grafico_ventas') ?>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xs-12">
+      <?php $this->load->view('widgets/_ultimas_solicitudes') ?>
     </div>
   </div>
 </section>

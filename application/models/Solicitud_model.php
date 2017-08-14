@@ -17,6 +17,21 @@ class Solicitud_model extends CI_Model {
     return $query->result_array();
   }
 
+  public function buscar_10_ultimas(){
+    $query = $this->db->query('SELECT s.id, s.estado, s.fecha_creacion as fecha, c.nombre as cliente, r1.numero_de_facturas, r1.total 
+                  FROM eugene.solicitudes as s
+                  INNER JOIN eugene.clientes as c on c.id = s.cliente_id
+                  LEFT JOIN (
+                    SELECT f.solicitud_id, count(*) as numero_de_facturas, sum(total) as total  
+                    FROM eugene.facturas as f
+                    group by f.solicitud_id
+                  ) as r1 on r1.solicitud_id = s.id
+          ORDER BY s.fecha_creacion DESC
+          LIMIT 10');
+
+    return $query->result_array();
+  }
+
   public function buscar_por_id($id){
     $query = $this->db->query('SELECT s.id, s.estado, s.cupones, s.fecha_creacion as fecha, c.nombre as cliente, r1.numero_de_facturas, r1.total, p.nombre as promocion 
         FROM eugene.solicitudes as s

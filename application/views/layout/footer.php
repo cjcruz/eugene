@@ -224,15 +224,11 @@
 
 
   <script src="/eugene/assets/plugins/jquery-validate/jquery.validate.min.js"></script>
-  <script type="text/javascript" src="/eugene/assets/plugins/jquery-validate/localization/messages_es.js" />
+  <script type="text/javascript" src="/eugene/assets/plugins/jquery-validate/localization/messages_es.js" ></script>
 
 
   <!-- ChartJS 1.0.1 -->
   <script src="/eugene/assets/plugins/chartjs/Chart.min.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <!-- <script src="assets/dist/js/pages/dashboard2.js"></script> -->
-  <!-- AdminLTE for demo purposes -->
-  <!-- <script src="assets/dist/js/demo.js"></script> -->
 
   <script src="/eugene/assets/dist/js/eugene.js"></script>
 

@@ -61,10 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="nav navbar-nav">
             <!-- User Account: style can be found in dropdown.less -->
             <?php $this->load->view('layout/_user_bar'); ?>
-            <!-- Control Sidebar Toggle Button -->
-            <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
+            
           </ul>
         </div>
 
