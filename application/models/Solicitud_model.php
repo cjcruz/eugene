@@ -5,7 +5,7 @@ class Solicitud_model extends CI_Model {
   }
 
   public function buscar_todos(){
-    $query = $this->db->query('SELECT s.id, s.estado, s.fecha_creacion as fecha, c.nombre as cliente, r1.numero_de_facturas, r1.total 
+    $query = $this->db->query('SELECT s.id, s.estado, s.fecha_creacion as fecha, c.nombre as cliente, r1.numero_de_facturas, r1.total, s.cupones 
         FROM eugene.solicitudes as s
         INNER JOIN eugene.clientes as c on c.id = s.cliente_id
         LEFT JOIN (
@@ -34,7 +34,7 @@ class Solicitud_model extends CI_Model {
   }
 
   public function buscar_por_id($id){
-    $query = $this->db->query('SELECT s.id, s.estado, s.cupones, s.fecha_creacion as fecha, c.nombre as cliente, r1.numero_de_facturas, r1.total, p.nombre as promocion 
+    $query = $this->db->query('SELECT s.id, s.estado, s.cupones, s.fecha_creacion as fecha, c.nombre as cliente, r1.numero_de_facturas, r1.total, p.nombre as promocion, s.promocion_id 
         FROM eugene.solicitudes as s
         INNER JOIN eugene.clientes as c on c.id = s.cliente_id
         INNER JOIN eugene.promociones as p on p.id = s.promocion_id
@@ -97,9 +97,12 @@ class Solicitud_model extends CI_Model {
     return NULL;
   }
 
-  public function calcularCupones($solicitud_id, $valor_base){
+  public function calcularCupones($solicitud_id){
+    $this->load->model('Promocion_model');
     $solicitud = $this->buscar_por_id($solicitud_id);
-    $n = intval($solicitud->total / $valor_base);
+    $promocion = $this->Promocion_model->buscar_por_id($solicitud->promocion_id);
+
+    $n = intval($solicitud->total / $promocion->valor_cupon);
     return $n;
   }
 

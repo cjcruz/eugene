@@ -41,6 +41,14 @@ class Promocion_model extends CI_Model {
     return $opciones;
   }
 
+  public function buscar_para_frontend_por_cliente_id($cliente_id){
+    $query = $this->db->query('SELECT p.id as promocion_id, p.nombre as promocion_nombre, sum(s.cupones) as cupones  
+      FROM eugene.promociones as p
+      INNER JOIN eugene.solicitudes as s ON s.promocion_id = p.id
+      WHERE s.estado = "aprobado" AND s.cliente_id = '.$cliente_id.' GROUP BY p.id, p.nombre');
+    return $query->result_array();
+  }
+
   public function guardar($data){
     $fecha_creacion = date("Y-m-d H:i:s");
     $data['estado'] = 'activo';

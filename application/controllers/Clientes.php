@@ -29,4 +29,45 @@ class Clientes extends Backend_Controller {
     );
     echo json_encode($respuesta);
   }
+
+  public function nuevo(){
+    $data = array();
+    $this->load->helper('form');
+    $this->load->view('layout/header', $data);
+    $this->load->view('clientes/nuevo', $data);
+    $this->load->view('layout/footer');
+  }
+
+  public function editar(){
+    $id = $this->uri->segment(3);
+    $data['data'] = $this->Cliente_model->captura($id);
+    $this->load->helper('form');
+    $this->load->view('layout/header', $data);
+    $this->load->view('Clientes/editar', $data);
+    $this->load->view('layout/footer');
+  }
+
+  public function ver(){
+    $id = $this->uri->segment(3);
+    $data['data'] = $this->Cliente_model->captura($id);
+    $this->load->helper('form');
+    $this->load->view('layout/header', $data);
+    $this->load->view('clientes/ver', $data);
+    $this->load->view('layout/footer');
+  }
+
+  public function crear(){
+    $data = $this->input->post('clientes');
+    $this->Cliente_model->addCliente($data);
+    $this->index();
+  }
+
+  public function cambiar(){
+    $this->Cliente_model->addUpdate();
+    $this->index();
+  }
+
+  public function volver(){
+    $this->index();
+  }
 }

@@ -17,7 +17,7 @@
     <tr>
       <td><?php echo $index+1; ?></td>
       <td><?php echo $item['tienda']; ?></td>
-      <td><?php echo $item['ventas']; ?></td>
+      <td>$<?php echo $item['ventas']; ?></td>
     </tr>
   <?php endforeach; ?>
   </table>

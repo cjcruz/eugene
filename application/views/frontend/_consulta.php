@@ -21,15 +21,13 @@
       <tr>
         <th>Promoción</th>
         <th># de Cupones</th>
-        <th>Estado</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($solicitudes as $solicitud) { ?>
+      <?php foreach ($promociones as $promocion) { ?>
       <tr>
-        <td><?php echo $solicitud['promocion'] ?></td>
-        <td><?php echo $solicitud['cupones'] ?></td>
-        <td><?php echo $solicitud['estado'] ?></td>
+        <td><?php echo $promocion['promocion_nombre'] ?></td>
+        <td><?php echo $promocion['cupones'] ?></td>
       </tr>
       <?php } ?>
     </tbody>

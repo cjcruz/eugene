@@ -32,7 +32,7 @@
             <span class="label label-info"><?php echo $item['estado'] ?></span>
             <?php } ?>
           </td>
-          <td><?php echo $item['total']; ?></td>
+          <td>$<?php echo $item['total']; ?></td>
           <td>
             <a href="<?php echo site_url('cupones/mostrar/'.$item['id']); ?>">Ver</a>
           </td>

@@ -16,6 +16,7 @@
         <th># Facturas</th>
         <th>Estado</th>
         <th>Total de Compras</th>
+        <th>Cupones</th>
         <th></th>
       </tr>
     </thead>
@@ -33,7 +34,8 @@
         <span class="label label-info"><?php echo $item['estado'] ?></span>
         <?php } ?>
       </td>
-      <td><?php echo $item['total']; ?></td>
+      <td>$<?php echo $item['total']; ?></td>
+      <td><?php echo $item['cupones']; ?></td>
       <td>
         <a href="<?php echo site_url('cupones/mostrar/'.$item['id']); ?>">Ver</a>
       </td>

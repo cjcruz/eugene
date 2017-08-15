@@ -19,6 +19,46 @@ class Tiendas extends Backend_Controller {
     $this->load->view('layout/footer');
   }
 
+  public function nuevo(){
+    $data = array();
+    $this->load->helper('form');
+    $this->load->view('layout/header', $data);
+    $this->load->view('tiendas/nuevo', $data);
+    $this->load->view('layout/footer');
+  }
+
+  public function editar(){
+    $id = $this->uri->segment(3);
+    $data['data'] = $this->Tienda_model->captura($id);
+    $this->load->helper('form');
+    $this->load->view('layout/header', $data);
+    $this->load->view('tiendas/editar', $data);
+    $this->load->view('layout/footer');
+  }
+
+  public function ver(){
+    $id = $this->uri->segment(3);
+    $data['data'] = $this->Tienda_model->captura($id);
+    $this->load->helper('form');
+    $this->load->view('layout/header', $data);
+    $this->load->view('tiendas/ver', $data);
+    $this->load->view('layout/footer');
+  }
+
+
+  public function crear(){
+    $data = $this->input->post('tiendas');
+    $this->Tienda_model->addTienda($data);
+    $this->index();
+    //var_dump($data);
+    //die;
+  }
+
+  public function cambiar(){
+    $this->Tienda_model->addUpdate();
+    $this->index();
+  }
+  
   public function ranking(){
     $data['title'] = 'Ranking de Tiendas';
     $data['ranking'] = $this->Tienda_model->ranking_de_ventas();

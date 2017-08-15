@@ -100,6 +100,9 @@ class Welcome extends Backend_Controller {
     $data['grafico_x'] = $this->_calcularEtiquetasDeFechas($fechas);
     $data['grafico_y'] = $this->_calcularRangoDeVentas($fechas);
 
+    $data['grafico_x'] = array_reverse($data['grafico_x']);
+    $data['grafico_y'] = array_reverse($data['grafico_y']);
+
 
     $data['title'] = 'Tablero';
     

@@ -18,18 +18,6 @@
       <li><a href="<?php echo base_url('/tiendas/ranking'); ?>"><i class="fa fa-circle-o"></i> Ranking</a></li>
     </ul>
   </li>
-  <li class="treeview">
-    <a href="#">
-      <i class="fa fa-ticket"></i> <span>Tickets de Parqueo</span>
-      <span class="pull-right-container">
-        <i class="fa fa-angle-left pull-right"></i>
-      </span>
-    </a>
-    <ul class="treeview-menu">
-      <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-      <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-    </ul>
-  </li>
   <li><a href="<?php echo base_url('/clientes'); ?>"><i class="fa fa-users"></i> <span>Clientes</span></a></li>
   <li><a href="<?php echo base_url('/tiendas'); ?>"><i class="fa fa-university"></i> <span>Tiendas</span></a></li>
   <li><a href="<?php echo base_url('/usuarios'); ?>"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>

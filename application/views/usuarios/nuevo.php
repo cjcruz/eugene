@@ -5,7 +5,8 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form role="form">
+    
+    <?php echo form_open('usuarios/crear'); ?>
       <div class="box-body">
         <div class="form-group">
           <label for="usuario">Usuario</label>
@@ -43,6 +44,6 @@
       <div class="box-footer">
         <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
-    </form>
+    
   </div>
 </section>

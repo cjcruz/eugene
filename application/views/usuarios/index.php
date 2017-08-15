@@ -23,8 +23,9 @@
       <td><?php echo $usuario['email']; ?></td>
       <td><?php echo $this->Usuario_model->getRol($usuario['auth_level']); ?></td>
       <td>
-        <a href="<?php echo site_url('clientes/'.$usuario['user_id']); ?>">Editar</a>
-        <a href="<?php echo site_url('clientes/'.$usuario['user_id']); ?>">Ver</a>
+        <a class="btn btn-warning pull-right" style="margin-right: 5px;" href="<?php echo site_url('Usuarios/editar/'.$usuario['user_id']); ?>">
+        <i class="fa fa-edit"></i>Editar</a>
+        <a class="btn btn-info pull-right" style="margin-right: 5px;" href="<?php echo site_url('Usuarios/ver/'.$usuario['user_id']); ?>"><i class="fa fa-search-plus"></i>Ver</a>
       </td>
     </tr>
   <?php endforeach; ?>

@@ -27,6 +27,37 @@ class Cliente_model extends CI_Model {
     $this->db->where('identificacion', $identificacion);
     $query = $this->db->get('clientes');
     return $query->row(0);
+  }
 
+  public function addCliente($data){
+    $this->db->insert('clientes', $data);
+  }
+
+  public function captura($id){
+    $datos = $this->buscar_todos();
+    $opcion = array();
+    foreach ($datos as $datos2) {
+      if($datos2['id'] == $id){
+        $d['id'] = $datos2['id'];
+        $d['nombre'] = $datos2['nombre'];
+        $d['identificacion'] = $datos2['identificacion'];
+        $d['telefono'] = $datos2['telefono'];
+        $d['direccion'] = $datos2['direccion'];
+        $d['email'] = $datos2['email'];
+        $opcion[] = $d;
+      }
+    }
+    return $opcion;
+  }
+
+  public function addUpdate(){
+    $datos = array(
+      'nombre' => $this->input->post('clientes[nombre]'),
+      'identificacion' => $this->input->post('clientes[identificacion]'),
+      'telefono' => $this->input->post('clientes[telefono]'),
+      'direccion' => $this->input->post('clientes[direccion]'),
+      'email' => $this->input->post('clientes[email]'));
+    $this->db->where('id',$this->input->post('clientes[id]'));
+    return $this->db->update('clientes',$datos);
   }
 }

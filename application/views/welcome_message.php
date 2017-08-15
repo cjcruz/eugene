@@ -27,7 +27,7 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3><?php echo $ventas ?></h3>
+          <h3>$<?php echo $ventas ?></h3>
           <p>Monto de Ventas</p>
         </div>
         <div class="icon">
